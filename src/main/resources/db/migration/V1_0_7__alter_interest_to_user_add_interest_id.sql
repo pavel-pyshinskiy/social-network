@@ -1,0 +1,1 @@
+ALTER TABLE `interest_to_user` ADD FOREIGN KEY (`interest_id`) REFERENCES `interests` (`id`);
