@@ -23,6 +23,8 @@ public class User {
 
     private String lastName;
 
+    private String city;
+
     private Sex sex;
 
     private Set<Interest> interests;

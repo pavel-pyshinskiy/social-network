@@ -4,5 +4,6 @@ CREATE TABLE `users` (
     `password` varchar(255),
     `firstname` varchar(255),
     `lastname` varchar(255),
-    `sex` varchar(255)
+    `sex` varchar(255),
+    `city` varchar(255)
 );

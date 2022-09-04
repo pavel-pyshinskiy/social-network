@@ -53,6 +53,7 @@ public class DefaultUserRepository implements UserRepository {
                 user.setEmail(rs.getString( "email"));
                 user.setFirstName(rs.getString( "firstname"));
                 user.setLastName(rs.getString( "lastname"));
+                user.setCity(rs.getString("city"));
                 user.setSex(Sex.valueOf(rs.getString( "sex")));
                 user.setInterests(interestRepository.getAll(user.getId()));
                 users.add(user);
@@ -79,7 +80,7 @@ public class DefaultUserRepository implements UserRepository {
 
     @Override
     public User save(User user) throws SQLException {
-        final String SAVE_USER_SQL_QUERY = "INSERT INTO users (email, password, firstname, lastname, sex) " +
+        final String SAVE_USER_SQL_QUERY = "INSERT INTO users (email, password, firstname, lastname, sex, city) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(SAVE_USER_SQL_QUERY)) {
@@ -88,6 +89,7 @@ public class DefaultUserRepository implements UserRepository {
             pst.setString(3, user.getFirstName());
             pst.setString(4, user.getLastName());
             pst.setString(5, user.getSex().toString());
+            pst.setString(6, user.getCity());
             pst.executeUpdate();
         }
         Optional<User> savedUser = findByEmail(user.getEmail());
@@ -106,7 +108,7 @@ public class DefaultUserRepository implements UserRepository {
 
     @Override
     public User update(User user) throws SQLException {
-        String SAVE_USER_SQL_QUERY = "UPDATE users SET email=?, password=?, firstname=?, lastname=?, sex=? WHERE id=?";
+        String SAVE_USER_SQL_QUERY = "UPDATE users SET email=?, password=?, firstname=?, lastname=?, sex=?, city=? WHERE id=?";
         try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(SAVE_USER_SQL_QUERY)) {
             pst.setString(1, user.getEmail());
@@ -114,7 +116,8 @@ public class DefaultUserRepository implements UserRepository {
             pst.setString(3, user.getFirstName());
             pst.setString(4, user.getLastName());
             pst.setString(5, user.getSex().toString());
-            pst.setLong(6, user.getId());
+            pst.setString(6, user.getCity());
+            pst.setLong(7, user.getId());
             pst.executeUpdate();
         }
         return user;
@@ -140,6 +143,7 @@ public class DefaultUserRepository implements UserRepository {
             user.setPassword(rs.getString("password"));
             user.setFirstName(rs.getString( "firstname"));
             user.setLastName(rs.getString( "lastname"));
+            user.setCity(rs.getString("city"));
             user.setSex(Sex.valueOf(rs.getString( "sex")));
         }
         return user;

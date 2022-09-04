@@ -14,6 +14,7 @@ public class UserConversionService {
                 .lastName(userDto.getLastName())
                 .sex(userDto.getSex())
                 .interests(userDto.getInterests())
+                .city(userDto.getCity())
                 .id(userDto.getId())
                 .build();
     }
@@ -27,6 +28,7 @@ public class UserConversionService {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .interests(user.getInterests())
+                .city(user.getCity())
                 .build();
     }
 }

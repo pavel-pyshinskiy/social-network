@@ -27,5 +27,7 @@ public class UserDto {
 
     private Sex sex;
 
+    private String city;
+
     private Set<Interest> interests;
 }
