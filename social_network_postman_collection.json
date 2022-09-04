@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "d0c55813-7f56-474a-8027-e6a08faad292",
+		"name": "Social network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Jack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testemail1\",\r\n    \"password\": \"testpass1\",\r\n    \"firstName\": \"jack\",\r\n    \"lastName\": \"hopkins\",\r\n    \"city\": \"Boston\",\r\n    \"sex\": \"MALE\",\r\n    \"interests\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"CINEMA\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Kristen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testemail2\",\r\n    \"password\": \"testpass2\",\r\n    \"firstName\": \"Kristen\",\r\n    \"lastName\": \"Stuart\",\r\n    \"city\": \"Boston\",\r\n    \"sex\": \"FEMALE\",\r\n    \"interests\": [\r\n        {\r\n        \"id\": 1,\r\n        \"name\": \"CINEMA\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get recommendations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 2,\r\n        \"email\": \"testemail2\",\r\n        \"password\": \"$2a$10$s5lACsLmJYI.dtjpD49slusFrWzpD8ETM8wW642vPU17cEahNo5Ey\",\r\n        \"firstName\": \"Kristen\",\r\n        \"lastName\": \"Stuart\",\r\n        \"sex\": \"FEMALE\",\r\n        \"interests\": [\r\n            {\r\n                \"id\": 1,\r\n                \"name\": \"CINEMA\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/friendship/recommendations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friendship",
+						"recommendations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Jack as a friend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/friendship/2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friendship",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jack Friends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/friendship/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friendship",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kristen friends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/friendship/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friendship",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"variable_key\", \"variable_value\");",
+					""
+				]
+			}
+		}
+	]
+}
