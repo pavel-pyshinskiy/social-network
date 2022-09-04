@@ -81,7 +81,7 @@ public class DefaultUserRepository implements UserRepository {
     @Override
     public User save(User user) throws SQLException {
         final String SAVE_USER_SQL_QUERY = "INSERT INTO users (email, password, firstname, lastname, sex, city) " +
-                "VALUES (?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(SAVE_USER_SQL_QUERY)) {
             pst.setString(1, user.getEmail());

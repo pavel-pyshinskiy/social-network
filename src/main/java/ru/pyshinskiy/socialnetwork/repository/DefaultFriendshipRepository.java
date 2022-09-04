@@ -41,6 +41,7 @@ public class DefaultFriendshipRepository implements FriendshipRepository {
                     user.setEmail(rs.getString("email"));
                     user.setFirstName(rs.getString("firstname"));
                     user.setLastName(rs.getString("lastname"));
+                    user.setCity(rs.getString("city"));
                     user.setSex(Sex.valueOf(rs.getString("sex")));
                     user.setInterests(interestRepository.getAll(user.getId()));
                     users.add(user);
